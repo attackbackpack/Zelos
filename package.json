@@ -1,0 +1,28 @@
+{
+  "name": "zelos",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~56.0.6",
+    "expo-router": "~56.2.7",
+    "expo-constants": "~56.0.16",
+    "expo-linking": "~56.0.12",
+    "expo-status-bar": "~3.0.0",
+    "@expo/vector-icons": "^15.0.0",
+    "react": "19.2.0",
+    "react-native": "0.85.3",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.25.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
