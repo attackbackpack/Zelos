@@ -3,7 +3,7 @@ _Date: 2026-06-24_
 
 ## Overview
 
-Add a login and sign-up screen pair that gates access to the app. Both screens are purely visual ("for show") — no real authentication logic. Pressing Log In or Sign Up on either screen bypasses auth and drops the user into the existing tab navigator.
+Add a login, sign-up, and forgot password screen that gates access to the app. All screens are purely visual ("for show") — no real authentication logic. Pressing Log In or Sign Up bypasses auth and drops the user into the existing tab navigator.
 
 ---
 
@@ -28,8 +28,9 @@ app/
   _layout.tsx          ← updated: adds auth redirect + (auth) stack entry
   (auth)/
     _layout.tsx        ← new: hides stack header for full-bleed screens
-    login.tsx          ← new: login screen
-    signup.tsx         ← new: sign up screen
+    login.tsx              ← new: login screen
+    signup.tsx             ← new: sign up screen
+    forgot-password.tsx    ← new: forgot password screen
   (tabs)/              ← unchanged
     _layout.tsx
     index.tsx
@@ -54,10 +55,11 @@ Top to bottom:
 2. **Tagline** — "Your athletic edge." in `font.size.md`, color `colors.textMuted`
 3. **Email input** — pill-shaped `TextInput`, `keyboardType="email-address"`, placeholder "Email"
 4. **Password input** — pill-shaped `TextInput`, `secureTextEntry` toggle with eye icon from `@expo/vector-icons` (Ionicons), placeholder "Password"
-5. **Log In button** — full-width, filled `colors.primary` background, dark label text. Calls `login()` on press → navigates to `/(tabs)`.
-6. **Sign Up button** — full-width, outlined (`colors.primary` border, transparent fill, `colors.primary` text). Navigates to `/(auth)/signup`.
-7. **Divider** — thin rule (`colors.border`) with "or continue with" centered in `colors.textMuted`
-8. **Social buttons** — three outlined buttons, stacked vertically, each with an icon on the left:
+5. **Forgot password link** — "Forgot password?" right-aligned text link in `colors.primary`, navigates to `/(auth)/forgot-password`
+6. **Log In button** — full-width, filled `colors.primary` background, dark label text. Calls `login()` on press → navigates to `/(tabs)`.
+7. **Sign Up button** — full-width, outlined (`colors.primary` border, transparent fill, `colors.primary` text). Navigates to `/(auth)/signup`.
+8. **Divider** — thin rule (`colors.border`) with "or continue with" centered in `colors.textMuted`
+9. **Social buttons** — three outlined buttons, stacked vertically, each with an icon on the left:
    - "Continue with Google" — `Ionicons` logo-google icon
    - "Continue with Apple" — `Ionicons` logo-apple icon
    - "Continue with Microsoft" — `Ionicons` logo-windows icon
@@ -79,6 +81,18 @@ Same visual skeleton as Login. Differences:
 
 ---
 
+### Forgot Password Screen (`app/(auth)/forgot-password.tsx`)
+
+Same visual skeleton as Login. Differences:
+
+1. **Tagline** — "Reset your password."
+2. **Inputs** — single Email input field
+3. **Send Reset Link button** — filled `colors.primary`, no-op on press (does nothing)
+4. **Back to Login button** — outlined, label "Back to Login", navigates to `/(auth)/login`
+5. No divider or social buttons
+
+---
+
 ## Shared Input Style
 
 Both screens use the same input component appearance:
@@ -97,4 +111,4 @@ Both screens use the same input component appearance:
 - No API calls or network requests
 - No persistent auth state (refreshing the app resets to login)
 - Social buttons do nothing on press
-- No "Forgot password" flow
+- "Send Reset Link" button does nothing on press (no-op)
